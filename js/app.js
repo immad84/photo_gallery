@@ -1,4 +1,5 @@
-const search = new Filter('search', 'data-caption');
+//const search = new Filter('search', 'data-caption');
+const search = document.getElementById('search');
 const images = document.querySelectorAll('.gallery img');
 const modal = document.getElementById('lightbox');
 const slide = document.querySelectorAll('.slide');
@@ -53,6 +54,19 @@ modal.addEventListener('click', function (event) {
     }
     else {
         closeModal();
+    }
+});
+
+
+search.addEventListener('keyup', function() {
+    for ( let i = 0 ; i < caption.length ; i++){
+        let str = caption[i].dataset.caption.toUpperCase();
+        if(str.indexOf(search.value.toUpperCase()) > -1){
+            caption[i].style.display = "";
+        }
+        else{
+            caption[i].style.display = "none";
+        }
     }
 });
 
